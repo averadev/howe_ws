@@ -1,0 +1,415 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: "Lato-Bold";
+    src: url(Lato-Bold.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Lato-Regular";
+    src: url(Lato-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Lato-Light";
+    src: url(Lato-Light.ttf) format("truetype");	
+}
+
+body{
+	background:url('../../assets/img/web/patterngreyzz.png') repeat;
+}
+
+#sectionUp{
+	margin-top:0;
+	padding-top:0;
+	background:#73DCFF;
+}
+
+#section{
+	margin-top:0;
+	padding-top:0;
+	margin-top:20px;
+}
+
+.TitleSection{
+	margin-top:25px;
+	text-align:center;
+	font-family:Lato-Bold;
+	font-size:24px;
+}
+
+/**********************/
+/*****Rectangulos******/
+/**********************/
+
+.rectRounded{
+	background:#FFFFFF;
+	width:100%;
+	height:auto;
+	min-height:550px;
+	border: solid #DDDDDD 1px;
+	margin-bottom:25px;
+	font-family: Lato-Regular;
+	margin:0;
+	margin-bottom:20px;
+}
+
+.rectRounded2{
+	background:#FFFFFF;
+	width:100%;
+	height:auto;
+	border: solid #DDDDDD 1px;
+	margin-bottom:25px;
+	font-family: Lato-Regular;
+	margin-top:20px;
+	padding-bottom:0;
+}
+
+.rectRoundedLeft{
+	float:right;
+}
+
+.rectRoundedRight{
+	float:left;
+}
+
+.bodyRectborderless{
+	padding-top:5px;
+}
+
+.headerRectRounded{
+	margin-top:15px;
+	font-size:20px;
+	padding-left:15px;
+}
+
+.bodyRectRounded{
+	margin:0;
+}
+
+.bodyMSGRectRounded{
+	width:100%;
+	padding-top:0;
+	font-size:14px;
+	cursor:pointer;
+	float:left;
+	margin-bottom:0;
+}
+
+.labeDateRectRounded{
+	float:left;
+	width:70%;
+	text-align:right;
+	font-size:12px;
+	padding-bottom:5px;
+	font-family: Lato-Light;
+	float:right;
+	color:#999999;
+}
+
+.labeProviderRectRounded{
+	float:left;
+	width:5%;
+	text-align:left;
+	font-size:12px;
+	padding-bottom:5px;
+	font-family:Lato-Light;
+	float:left;
+	color:#FF0000;
+	
+}
+
+.labeInfoRectRounded{
+	float:left;
+	width:100%;
+	text-align:left;
+	font-size:14px;
+	padding-bottom:0;
+	font-family: Lato-Bold;
+	
+}
+
+/*******Loading***********/
+.bodyLoanding{
+	width:100%;
+	margin-top:15%;
+	margin-bottom:15%;
+	text-align:center;
+}
+
+/*****capos del mensaje dashbord*****/
+
+#dateMessage{
+	margin-top:20px;
+	text-align:right;
+	font-family:Lato-Light;
+	margin-bottom:20px;
+}
+
+.titleInfoMSGDash{
+	font-family:Lato-Bold;
+	font-size:18px;
+	margin-bottom:10px;
+}
+
+.InfoMSGDash{
+	font-family:Lato-Regular;
+	font-size:16px;
+	margin-bottom:15px;
+}
+
+/*********************************/
+/***********Message***************/
+/*********************************/
+
+#dateMessage2{
+	margin-top:20px;
+	text-align:right;
+	font-family:Lato-Light;
+	margin-bottom:20px;
+	font-size:14px;
+}
+
+.rectborderless{
+	width:100%;
+	height:auto;
+	border:solid #DDDDDD 1px;
+	margin-bottom:25px;
+	font-family: Lato-Regular;
+	background:#F7F7F7;
+	min-height:550px;
+}
+
+.InfoMSGBold{
+	font-family:Lato-Bold;
+	font-size:14px;
+	margin-bottom:20px;
+}
+
+.InfoMSG{
+	font-family:Lato-Regular;
+	font-size:14px;
+	margin-bottom:20px;
+}
+
+#bodyRectborderless{
+	display:none;
+}
+
+#btmAddMsgAdmin{
+	float:right;
+	margin-right:10px;
+}
+
+#messageAlertModal{
+	display:none;
+}
+
+.bodyLoandingSend{
+	width:100%;
+	text-align:center;
+	float:left;
+	width:100%;
+	text-align:center;
+}
+
+.dialogModal .ui-dialog-titlebar{
+	color:#FFF;	
+	background:#004987;
+}
+	
+/*.dialogDash .ui-button .ui-button-text{
+	color:#FFF;	
+	background:#cf2a0e;
+	border-color:#cf2a0e;
+}*/
+
+.dialogButtonAceptar .ui-button-text{
+	color:#FFF;	
+	background:#004987;
+	border-color:#002C52;
+    font-size: 0.875rem;
+}
+	
+.dialogButtonCancel .ui-button-text{
+	color:#7d7d7d;	
+	background:#efe9e9;
+	border-color:#dadada;
+    font-size: 0.875rem;
+}
+
+/*****tabla mensaje y condominio *********/
+
+.btnAddItem{
+	float:right;
+	margin-right:40px;
+}
+
+.imgDeleteItem{
+	width:35px;
+}
+
+.imgAddUser{
+	width:25px;
+}
+
+/***** img ******/
+
+.newImageAdd{
+	cursor:pointer;
+}
+
+/*********** formulario *********/
+
+/**********table*****************/
+
+/*table thead tr th, table tfoot tr th, table tfoot tr td, table tbody tr th, table tbody tr td, table tr td*/
+
+table thead tr th{
+	font-size:12px;
+	height:auto;
+	font-family:Lato-Bold;
+	padding:5px;
+	padding-left:10px;
+}
+
+table tr td{
+	height:auto;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.tableReport{
+	font-size:14px;
+}
+
+.ui-widget-content .editResident{
+	color:#0078a0;
+}
+
+.btnWarning{
+	background:#000;
+	border: 1px solid #FFFFFF;
+	padding: 4px 10px;
+	margin:-5px 2px;
+	text-align:center;
+	line-height:1;
+	font-size:12px;
+	border-radius:5px 5px;
+	height:25px;
+	float:right;
+	right:-20px;
+}
+
+.btnWarning:hover{
+	background:#3A3838;
+	border-color:#FFFFFF;
+}
+
+.btnWarning:focus{
+	background:#000;
+	border-color:#FFFFFF;
+}
+
+.alert-box#alertMessagewarning{
+	width:100%;
+	float:left;
+	position:relative;
+	min-height:auto;
+}
+
+#textDeleteCondominium{
+	width:80%;
+	float:left;
+}
+
+/******************************/
+.divFilter{
+	width:100%;
+	height:40px;
+	background:#EDECE7;
+	border:solid #B8B4AB 1px;
+	margin-top:20px;
+}
+
+.imgPicture{
+	width:auto;
+	height:125px;
+}
+
+#isProvider{
+	width:40px;
+	height:40px;
+}
+
+#dateVisit{
+	margin-bottom:10px;
+	text-align:right;
+}
+
+#providerVisit{
+	text-align:left;
+	color:#008B1E;
+	margin-bottom:10px;
+	margin-left:15px;
+}
+
+/********************************/
+/**********paginador*************/
+
+a img{
+	
+	border:none;
+	outline:none;
+}
+
+.content{
+	margin-top:-30px;
+	padding:0px;
+	bottom:0px;
+	text-align:center;
+}            
+
+.demo{
+	width: 100%;
+	padding: 10px;
+	margin: 10px auto;
+	border: 1px solid #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+}
+
+.demo h1 {
+	color:#CCC;
+}
+
+.pagedemo{
+	border: 1px solid #CCC;
+	width: 90%;
+	margin: 2px;
+	padding: 50px 10px;
+	text-align: center;
+	background-color: white;
+	font-size: 50px;
+}
+
+/********************************************/
+/***************medias queries***************/
+/********************************************/
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { 
+	
+}
+
+@media only screen and (max-width: 40em) {
+	
+	.rectRoundedLeft{
+		float:left;
+	}
+
+	.rectRoundedRight{
+		float:right;
+	}
+	
+}

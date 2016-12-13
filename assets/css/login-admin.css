@@ -1,0 +1,148 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	
+	font-family: "Lato-Bold";
+    src: url(Lato-Bold.ttf) format("truetype");
+	
+}
+
+@font-face {
+	
+	font-family: "Lato-Regular";
+    src: url(Lato-Regular.ttf) format("truetype");
+	
+}
+
+@font-face {
+	
+	font-family: "Lato-Light";
+    src: url(Lato-Light.ttf) format("truetype");
+	
+}
+
+
+
+html{
+}
+
+html,body {
+	height:100%;
+	font-family:"Lato-Light";
+}
+
+body {
+	/*background:#86B4CC;*/
+	
+	background: rgba(11,47,93,1);
+	background: -moz-linear-gradient(left, rgba(11,47,93,1) 0%, rgba(6,37,66,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(11,47,93,1)), color-stop(100%, rgba(6,37,66,1)));
+	background: -webkit-linear-gradient(left, rgba(11,47,93,1) 0%, rgba(6,37,66,1) 100%);
+	background: -o-linear-gradient(left, rgba(11,47,93,1) 0%, rgba(6,37,66,1) 100%);
+	background: -ms-linear-gradient(left, rgba(11,47,93,1) 0%, rgba(6,37,66,1) 100%);
+	background: linear-gradient(to right, rgba(11,47,93,1) 0%, rgba(6,37,66,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0b2f5d', endColorstr='#062542', GradientType=1 );
+    background: url('../../assets/img/web/patternLogin.png');
+	
+}
+
+#bgFormLogin{
+	background: rgba(138, 184, 204, 0.9);
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    margin-top: 15%;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 5px 11px 3px #111;
+}
+
+#headerFormLogin{
+	width:100%;
+	height:100px;
+	position:absolute;
+	top:0;
+}
+
+#footerFormLogin{
+	width:100%;
+	height:50px;
+	float:left;
+	position:absolute;
+	bottom:0;
+}
+
+#imgLogoLogin{
+	width:100%;
+	height:100%;
+	text-align:center;
+}
+
+#imgLogoLogin img {
+	
+	width:200px;
+	padding-top:3px;
+    margin: -89px 0;
+}
+
+#textLogoLogin{
+	width:60%;
+	height:100%;
+	float:right;
+	color:#C6C6C6;
+	font-family:Lato-Light;
+	font-size:34px;
+	padding-top:10px;
+}
+
+#bodyFormLogin{
+	padding-top: 90px;
+}
+
+span.prefix{
+	background:#004790;
+	line-height:0;
+}
+
+.iconFormLogin{
+	padding-top:4px;
+	width:25px;	
+}
+
+#btnlogin{
+	background:#004790;
+	font-family:Lato-Regular;
+}
+
+#btnlogin:hover{
+	background:#082E56;
+}
+
+/*media para tables*/
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { 
+	
+}
+
+/*media para celulares*/
+@media only screen and (max-width: 40em) {
+	
+}
+
+/**************************************************/
+/******************Login admin*********************/
+/**************************************************/
+
+#bodyAdmin{
+	background:#FFFFFF;
+}
+
+#bgFormLogin2{
+	background: rgba(247, 247, 247, 1);
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    margin-top: 15%;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 5px 11px 3px #D9D7D7;
+}

@@ -1,0 +1,377 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: "Lato-Bold";
+    src: url(Lato-Bold.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Lato-Regular";
+    src: url(Lato-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Lato-Light";
+    src: url(Lato-Light.ttf) format("truetype");	
+}
+
+
+
+header{
+	width:100%;
+	height:auto;
+	text-align:center;
+}
+
+header nav{
+	width:100%;
+	height:auto;
+	background:#FFFFFF;
+	float:left;
+	text-align:center;
+}
+
+header nav #navLogout{
+	width:100%;
+	height:25px;
+	float:left;
+	background: rgba(0,37,70,1);
+	background: -moz-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(153,189,115,1)), color-stop(100%, rgba(0, 23, 43,1)));
+	background: -webkit-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: -o-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: -ms-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: linear-gradient(to bottom, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99bd73', endColorstr='#76915a', GradientType=0 );
+/*	background:url('../../assets/img/web/green.png');*/
+	border-bottom:solid #008B1E 2px;
+}
+
+#contNavLogout{
+	margin: 0 auto;
+	position:relative;
+	width:990px;
+	background:none;
+}
+
+#contBtnLogOut{
+	width: 135px;
+    height: 25px;
+    background: #008B1E;
+    cursor: pointer;
+    float: right;
+}
+
+#btnLogOut{
+	margin-top:2px;
+	float:left;
+	margin-left:10px;
+}
+
+#labelLogOut{
+	font-size: 14px;
+    color: #FFFFFF;
+    font-family: Lato-Regular;
+    padding: 0;
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
+	
+}
+
+#labelMenuMovil{
+	display:none;
+}
+
+#imgMenuMovil{
+	display:none;
+}
+
+header nav #navMenu{
+	width:100%;
+	height:132px;
+	background:none;
+	float:left;
+	/*border-bottom:solid #002E5F 2px;*/
+	background:none;
+	
+}
+
+#navMenu ul{
+	margin: 0 auto;
+	position:relative;
+	list-style:none;
+	width:1125px;
+	color:#DCE0E5;
+	background:none;
+	height:130px;
+	border-bottom:solid #000000 2px;
+	
+}
+
+#navMenu ul a{
+	color:#DCE0E5;
+	text-decoration: none;
+}
+
+#navMenu ul a li{
+	float:left;
+	width:135px;
+	height:128px;
+	background:#004987;
+	text-align:center;
+	border-right:solid #002E5F 2px;
+}
+
+#navMenu ul a #imgLogo{
+	width:180px;
+	background:#FFFFFF;
+}
+
+#navMenu ul a .active{
+	-webkit-box-shadow: inset 0px 0px 50px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 0px 50px 2px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 50px 2px rgba(0,0,0,0.75);
+}
+
+
+
+#navMenu ul a li p{
+	font-size:22px;
+	font-family: Lato-Light;
+	color:#FFFFFF;
+}
+
+.imgIconHeader{
+	margin-bottom:20px;
+	width:100%;
+	height:50%;
+	text-align:center;
+}
+
+#iconHome{
+	padding-top:15px;
+}
+
+#iconMessageHeader{
+	padding-top:10px;
+}
+
+#iconSendHeader{
+	padding-top:25px;
+}
+
+#iconSuggestion{
+	padding-top:22px;
+}
+
+#iconCondoHeader{
+	padding-top:15px;
+}
+
+#iconGuardHeader{
+	padding-top:15px;
+}
+
+/*#navMenu ul a li img{
+	height:80px;
+	width:100px;
+	float:left;
+	text-align:center;
+	/*padding-top:10px;
+	margin-left:20%;
+}*/
+
+#navMenu ul a #lastLiMenu{
+	border-right:none;
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+	
+	#navMenu ul{
+		width:100%;
+		margin-left:0;
+	}
+	
+	#navMenu ul a li{
+		float:left;
+		width:11%;
+	}
+	
+	#navMenu ul a li p{
+	font-size:18px;
+}
+	
+	#navMenu ul a #imgLogo{
+		width:20%;
+		background:#FFFFFF;
+	}
+}
+
+@media only screen and (max-width: 40em) {
+
+	header nav{
+		width:100%;
+		height:105px;
+		background:FFFFFF;
+		float:left;
+		text-align:center;
+	}
+
+	header nav #navLogout{
+		width:100%;
+		height:50px;
+		background:url('../../assets/img/web/green.png');
+		float:left;
+	}
+
+	header nav #navMenu{
+		width:94%;
+		margin-left:3%;
+		height:50px;
+		background:#FFFFFF;
+		float:left;
+		border:solid #002E5F 2px;
+		text-align:center;
+		margin-top:5px;
+	}
+	
+	#imgMenuMovil{
+		display:inline;
+		width:30px;
+		margin-top:7px;
+		float:right;
+		margin-right:10px;
+		cursor:pointer;
+	}
+	
+	#labelMenuMovil{
+		display:inline;
+		left:10%;
+		top:70px;
+		font-size:20px;
+		position:absolute;
+	}
+	
+	header nav #navMenu ul{
+		position:absolute;
+		width:94%;
+		margin-left:0;
+		height:auto;
+		border-bottom:0;
+		margin-top:48px;
+		z-index:10;
+		display:none;
+		left:3%;
+	}
+	
+	#navMenu ul a li{
+		float:left;
+		width:100%;
+		height:50px;
+		background:#004987;
+		text-align:center;
+		border-right:solid #002E5F 2px;
+		border:solid #002E5F 2px;
+		border-bottom:0;
+		background:#00000;
+		display:inline
+	}
+	
+	#navMenu ul a #imgLogo{
+		display:none;
+	}
+	
+	#navMenu ul a #lastLiMenu{
+		border-right:solid #002E5F 2px;
+		border-bottom:solid #002E5F 2px;
+		
+	}
+
+	.imgIconHeader{
+		display:none;
+	}
+	
+	#navMenu ul a li p{
+		padding-top:5px;
+	}
+	
+	#navMenu ul a li:hover{
+		background:#002E5F;
+	}
+	
+	#LogOut{
+		display:none;
+	}
+}
+
+/********************************************/
+/*******************Footer*******************/
+/********************************************/
+
+footer {
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    line-height: 1.4;
+    font-family: Lato-Regular;
+    font-size: 12px;
+    border-top: solid #000000 2px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: rgba(0,37,70,1);
+	background: -moz-linear-gradient(top, rgba(0, 23, 43,1) 0%, rgba(0,37,70,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(10, 23, 43,1)), color-stop(100%, rgba(0,37,70,1)));
+	background: -webkit-linear-gradient(top, rgba(0, 23, 43,1) 0%, rgba(0,37,70,1) 100%);
+	background: -o-linear-gradient(top, rgba(0, 23, 43,1) 0%, rgba(0,37,70,1) 100%);
+	background: -ms-linear-gradient(top, rgba(0, 23, 43,1) 0%, rgba(0,37,70,1) 100%);
+	background: linear-gradient(to bottom, rgba(0, 23, 43,1) 0%, rgba(0,37,70,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99bd73', endColorstr='#76915a', GradientType=0 );
+/*    background: url('../../assets/img/web/green.png');*/
+}
+
+/***************************************************/
+/******************Admin****************************/
+/***************************************************/
+
+#headerAdmin{
+	height:300px;
+	margin-bottom:25px;
+}
+
+#menuHeaderAdmin{
+	border-bottom:solid #008B1E 1px;
+	float:left;
+}
+
+#menuHeaderAdmin p{
+	font-family: Lato-Bold;
+	font-size:34px;
+	margin-bottom:0;
+}
+
+header nav #navLogout2{
+	width:100%;
+	height:25px;
+	float:left;
+	background: rgba(0,37,70,1);
+	background: -moz-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(153,189,115,1)), color-stop(100%, rgba(0, 23, 43,1)));
+	background: -webkit-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: -o-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: -ms-linear-gradient(top, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	background: linear-gradient(to bottom, rgba(0,37,70,1) 0%, rgba(0, 23, 43,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99bd73', endColorstr='#76915a', GradientType=0 );
+	/*background:url('../../assets/img/web/green.png');*/
+	border-bottom:solid #008B1E 2px;
+}
+
+#contBtnLogOut2{
+	width: 135px;
+    height: 25px;
+    background: #008B1E;
+    cursor: pointer;
+    float: right;
+}
+
