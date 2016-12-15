@@ -18,7 +18,7 @@ class Api extends REST_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->database('default');
-        $this->load->model('api_db');
+        $this->load->model('Api_db');
     }
 
 	public function index_get(){
@@ -34,18 +34,18 @@ class Api extends REST_Controller {
         $message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
             // Obtener cupones
-            $data = $this->api_db->verifyEmailPassAdmin($this->get('email'), $this->get('password'));
+            $data = $this->Api_db->verifyEmailPassAdmin($this->get('email'), $this->get('password'));
             if (count($data) > 0){
                 // Guardar OneSignal
-                $this->api_db->updateAdminOS($data[0]->id, $this->get('idOneSignal'));
+                $this->Api_db->updateAdminOS($data[0]->id, $this->get('idOneSignal'));
                 
-				$items = $this->api_db->getInfoGuard($data[0]->residencialId);
+				$items = $this->Api_db->getInfoGuard($data[0]->residencialId);
 				foreach ($items as $item):
 					$item->path = 'assets/img/app/user/';
 				endforeach;
-				$items2 = $this->api_db->getCondominium($data[0]->residencialId);
-				$items3 = $this->api_db->getResidential($data[0]->residencialId);
-                $asuntos = $this->api_db->getAsuntos($data[0]->residencialId);
+				$items2 = $this->Api_db->getCondominium($data[0]->residencialId);
+				$items3 = $this->Api_db->getResidential($data[0]->residencialId);
+                $asuntos = $this->Api_db->getAsuntos($data[0]->residencialId);
                 $message = array('success' => true, 'message' => 'Usuario correcto', 'items' => $data, 'items2' => $items, 'items3' => $items2, 'items4' => $items3, 'asuntos' => $asuntos);
             }else{
                 $message = array('success' => false, 'message' => 'El usuario o password es incorrecto.');
@@ -62,14 +62,14 @@ class Api extends REST_Controller {
         $message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
             // Obtener cupones
-            $data = $this->api_db->verifyEmailPassUser($this->get('email'), $this->get('password'));
+            $data = $this->Api_db->verifyEmailPassUser($this->get('email'), $this->get('password'));
 			
 			$playerId = 0;
             if (count($data) > 0){
 				if (count($data) == 1){
-					$this->api_db->setIdPlayerUser($data[0]->id, $this->get('playerId'));
+					$this->Api_db->setIdPlayerUser($data[0]->id, $this->get('playerId'));
 				}
-				$residencial = $this->api_db->getResidential($data[0]->residencialId);
+				$residencial = $this->Api_db->getResidential($data[0]->residencialId);
 				
                 $message = array('success' => true, 'message' => 'Usuario correcto', 'items' => $data, 'residencial' => $residencial);
             }else{
@@ -87,7 +87,7 @@ class Api extends REST_Controller {
         $message = $this->verifyIsSetPost(array('idApp'));
         if ($message == null) {
 			
-            $data = $this->api_db->verifyExistingMail($this->post('email'));
+            $data = $this->Api_db->verifyExistingMail($this->post('email'));
 			
 			$playerId = 0;
             if (count($data) == 0){
@@ -102,17 +102,17 @@ class Api extends REST_Controller {
 					'playerId' => $playerId,
 				);
 				
-				$id = $this->api_db->insert($insert, "residente");
+				$id = $this->Api_db->insert($insert, "residente");
 				
-				//$data2 = $this->api_db->verifyEmailPassUser($this->post('email'), $this->post('password'));
+				//$data2 = $this->Api_db->verifyEmailPassUser($this->post('email'), $this->post('password'));
 				
 				/*if( count( $data2 ) > 0 ){
-					$residencial = $this->api_db->getResidential($data[0]->residencialId );
+					$residencial = $this->Api_db->getResidential($data[0]->residencialId );
 				}*/
 				 
 				$message = array( 'success' => true, 'message' => 'se ha registrado, espere confirmacion del administrador' );
 				
-				//$residencial = $this->api_db->getResidential($data[0]->residencialId);
+				//$residencial = $this->Api_db->getResidential($data[0]->residencialId);
 				
             }else{
                 $message = array('success' => false, 'message' => 'El correo ya existe.');
@@ -131,7 +131,7 @@ class Api extends REST_Controller {
         $message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
             // Obtener cupones
-            $data = $this->api_db->setIdPlayerUser($this->get('idApp'), $this->get('playerId'));
+            $data = $this->Api_db->setIdPlayerUser($this->get('idApp'), $this->get('playerId'));
 			$message = array('success' => true, 'message' => 'Condominio asignado.', 'items' => $data);
         }
         $this->response($message, 200);
@@ -141,7 +141,7 @@ class Api extends REST_Controller {
 	 * Actualiza el playerId de los usuario
 	 */
 	public function getNotif_get() { 
-        $items = $this->api_db->getNotif($this->get('residencial'));
+        $items = $this->Api_db->getNotif($this->get('residencial'));
         $this->response(array('success' => true, 'items' => $items), 200);
     }
 	
@@ -149,10 +149,10 @@ class Api extends REST_Controller {
 	 * Actualiza el playerId de los usuario
 	 */
 	public function updateVisitAction_get() { 
-        $this->api_db->updateVisitAction($this->get('idMSG'), $this->get('action'));
+        $this->Api_db->updateVisitAction($this->get('idMSG'), $this->get('action'));
         // Mandar notificacion guardia
         if ($this->get('action') == "2" || $this->get('action') == "3"){
-            $data = $this->api_db->getIdsOneSignal($this->get('residencial'));
+            $data = $this->Api_db->getIdsOneSignal($this->get('residencial'));
             foreach ($data as $item):
                 if (isset($item->idOneSignal)) {
                     $this->SendNotificationSecurity($item->idOneSignal, $this->get('action'), "d5a06f1e-b4c1-424a-8964-52458c9045a6");
@@ -171,7 +171,7 @@ class Api extends REST_Controller {
         $message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
             // Obtener cupones
-            $data = $this->api_db->deletePlayerIdOfUSer($this->get('idApp'), $this->get('condominioId'));
+            $data = $this->Api_db->deletePlayerIdOfUSer($this->get('idApp'), $this->get('condominioId'));
 			$message = array('success' => true, 'message' => 'Sesión terminada.', 'items' => $data);
         }
         $this->response($message, 200);
@@ -185,7 +185,7 @@ class Api extends REST_Controller {
 		$message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
             // Obtener cupones
-            $data = $this->api_db->signOutAdmin($this->get('idApp'), $this->get('password'));
+            $data = $this->Api_db->signOutAdmin($this->get('idApp'), $this->get('password'));
             if (count($data) > 0){
                 $message = array('success' => true, 'message' => 'Usuario correcto', 'items' => $data);
             }else{
@@ -197,13 +197,13 @@ class Api extends REST_Controller {
 	}
     
 	public function getCity_get(){
-		$items = $this->api_db->getCity();
+		$items = $this->Api_db->getCity();
         $message = array('success' => true, 'items' => $items);
         $this->response($message, 200);
 	}
 	
 	/*public function getInfoGuard_get(){
-		$items = $this->api_db->getInfoGuard($this->get('recidencial'));
+		$items = $this->Api_db->getInfoGuard($this->get('recidencial'));
 		foreach ($items as $item):
             $item->path = 'assets/img/app/user/';
         endforeach;
@@ -233,7 +233,7 @@ class Api extends REST_Controller {
 				'status' 				=> 1
 			);
 			
-			$idMSGNew = $this->api_db->saveMessageGuard($insert);
+			$idMSGNew = $this->Api_db->saveMessageGuard($insert);
 			$items = array( 'idMSGNew' => $idMSGNew, 'idMSG' => $this->get('idMSG') );
 			$message = array('success' => true, 'message' => 'Mensaje enviado', 'items' => $items);
         }
@@ -267,11 +267,11 @@ class Api extends REST_Controller {
 				'status' 				=> 1
 			);
 			
-			$idMSGNew = $this->api_db->saveRecordVisit($insert);
+			$idMSGNew = $this->Api_db->saveRecordVisit($insert);
 			$items = array( 'idMSGNew' => $idMSGNew, 'idMSG' => $this->get('idMSG') );
 			
 			
-			$user = $this->api_db->getUserByCondominioId($this->get('condominiosId'));
+			$user = $this->Api_db->getUserByCondominioId($this->get('condominiosId'));
 			
 			if( count($user) > 0){
 				if($user[0]->playerId != 0 || $user[0]->playerId != '0'){
@@ -297,7 +297,7 @@ class Api extends REST_Controller {
 	public function getLastGuard_get(){
 		$message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
-			$items = $this->api_db->getLastGuard($this->get('condominioId'));
+			$items = $this->Api_db->getLastGuard($this->get('condominioId'));
 			if(count($items) > 0){
 				foreach ($items as $item):
 					$item->path = 'assets/img/app/user/';
@@ -316,8 +316,8 @@ class Api extends REST_Controller {
 	public function getMessageUnRead_get(){
 		$message = $this->verifyIsSet(array('idApp'));
         if ($message == null) {
-			$items = $this->api_db->getMessageAdminUnRead($this->get('condominium'));
-			$items2 = $this->api_db->getMessageVisitUnRead($this->get('condominium'));
+			$items = $this->Api_db->getMessageAdminUnRead($this->get('condominium'));
+			$items2 = $this->Api_db->getMessageVisitUnRead($this->get('condominium'));
 			$items = count($items);
 			$items2 = count($items2);
 			$message = array('success' => true, 'message' => 'Mensajes sin leer', 'items' => $items, 'items2' => $items2);
@@ -337,7 +337,7 @@ class Api extends REST_Controller {
                'leido' => 1,
             );
 			
-			$this->api_db->markMessageRead($this->get('idMSG'), $this->get('typeM'), $data);
+			$this->Api_db->markMessageRead($this->get('idMSG'), $this->get('typeM'), $data);
 			
 			$message = array('success' => true, 'message' => 'Mensajes marcado como leido');
         }
@@ -352,7 +352,7 @@ class Api extends REST_Controller {
         if ($message == null) {
 			$months = array('', 'Enero','Febrero','Marzp','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
 			$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-			$items = $this->api_db->getMessageToVisit($this->get('condominium'));
+			$items = $this->Api_db->getMessageToVisit($this->get('condominium'));
 			if (count($items) > 0){
 				foreach($items as $item):
 					$fechaD = $dias[date('N', strtotime($item->fechaHora)) - 1];
@@ -377,7 +377,7 @@ class Api extends REST_Controller {
         if ($message == null) {
 			$months = array('', 'Enero','Febrero','Marzp','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
 			$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-			$items = $this->api_db->getMessageToVisitById($this->get('idMSG'));
+			$items = $this->Api_db->getMessageToVisitById($this->get('idMSG'));
 			if (count($items) > 0){
 				foreach($items as $item):
 					$fechaD = $dias[date('N', strtotime($item->fechaHora)) - 1];
@@ -402,7 +402,7 @@ class Api extends REST_Controller {
         if ($message == null) {
 			$months = array('', 'Enero','Febrero','Marzp','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
 			$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-			$items = $this->api_db->getMessageToAdmin($this->get('condominioId'));
+			$items = $this->Api_db->getMessageToAdmin($this->get('condominioId'));
 			if (count($items) > 0){
 				foreach($items as $item):
 					$fechaD = $dias[date('N', strtotime($item->fechaHora)) - 1];
@@ -427,7 +427,7 @@ class Api extends REST_Controller {
         if ($message == null) {
 			$months = array('', 'Enero','Febrero','Marzp','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
 			$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-			$items = $this->api_db->getMessageToAdminById($this->get('idMSG'));
+			$items = $this->Api_db->getMessageToAdminById($this->get('idMSG'));
 			if (count($items) > 0){
 				foreach($items as $item):
 					$fechaD = $dias[date('N', strtotime($item->fechaHora)) - 1];
@@ -463,7 +463,7 @@ class Api extends REST_Controller {
 				);
 			}
 			
-			$this->api_db->deleteMsgVisit($visit);
+			$this->Api_db->deleteMsgVisit($visit);
 			
 			$message = array('success' => true, 'message' => 'Mensajes eliminados');
         }
@@ -484,7 +484,7 @@ class Api extends REST_Controller {
 					'status'=> 0
 				);
 				$condicion = "id = " . $idV;
-				$this->api_db->updateReturn($update,"xref_notificaciones_condominio", $condicion);
+				$this->Api_db->updateReturn($update,"xref_notificaciones_condominio", $condicion);
 			}
 			
 			$message = array('success' => true, 'message' => 'Mensajes eliminados');
@@ -511,7 +511,7 @@ class Api extends REST_Controller {
 				'status' 				=> 1
 			);
 			
-			$this->api_db->saveSuggestion($insert);
+			$this->Api_db->saveSuggestion($insert);
 			$message = array('success' => true, 'message' => 'Mensaje enviado');
         }
         $this->response($message, 200);
@@ -597,7 +597,7 @@ class Api extends REST_Controller {
 		//print("\nJSON sent:\n");
 		// print($fields);
 		
-		$this->api_db->updateMSGStatusSent($idMSGNew, $typeMSG);
+		$this->Api_db->updateMSGStatusSent($idMSGNew, $typeMSG);
 		
 		$ch = curl_init();
 	
@@ -618,7 +618,7 @@ class Api extends REST_Controller {
 		$pos = strpos($return, $findme);
 	
 		if ($pos === false) {
-			$this->api_db->updateMSGStatusReceived($idMSGNew, $typeMSG);
+			$this->Api_db->updateMSGStatusReceived($idMSGNew, $typeMSG);
 		}
 	
 		curl_close($ch);
