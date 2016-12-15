@@ -21,6 +21,14 @@ Class api_db extends CI_MODEL
         $this->db->where('email', $data['email']);
         $this->db->update('user', $data);
     }
+	
+	/**
+     * inserta y retorna la id
+     */
+	public function updateReturn($data, $table, $condicion){
+		$this->db->where($condicion);
+		$this->db->update($table, $data);
+	}
  
     /**
      * Obtiene los datos del usuario
@@ -439,15 +447,6 @@ Class api_db extends CI_MODEL
 	public function deleteMsgVisit($data){
 		
 		$this->db->update_batch('registro_visitas', $data, 'id'); 
-		
-	}
-	
-	/**
-	 * Elimina los mensajes de visitas
-	 */
-	public function deleteMsgAdmin($data){
-		
-		$this->db->update_batch('xref_notificaciones_condominio', $data, 'id'); 
 		
 	}
 	

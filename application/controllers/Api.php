@@ -402,7 +402,7 @@ class Api extends REST_Controller {
         if ($message == null) {
 			$months = array('', 'Enero','Febrero','Marzp','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
 			$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-			$items = $this->api_db->getMessageToAdmin($this->get('condominium'));
+			$items = $this->api_db->getMessageToAdmin($this->get('condominioId'));
 			if (count($items) > 0){
 				foreach($items as $item):
 					$fechaD = $dias[date('N', strtotime($item->fechaHora)) - 1];
@@ -479,17 +479,13 @@ class Api extends REST_Controller {
 			
 			$msgAdmin =  json_decode($this->get('idMSG'));
 			
-			$admin = array();
-			
 			foreach($msgAdmin as $idV){
-				array_push($admin, array(
-					'id' => $idV,
+				$update = array(
 					'status'=> 0
-					)
 				);
+				$condicion = "id = " . $idV;
+				$this->api_db->updateReturn($update,"xref_notificaciones_condominio", $condicion);
 			}
-			
-			$this->api_db->deleteMsgAdmin($admin);
 			
 			$message = array('success' => true, 'message' => 'Mensajes eliminados');
         }

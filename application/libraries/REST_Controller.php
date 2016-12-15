@@ -1027,10 +1027,10 @@ abstract class REST_Controller extends CI_Controller
 	{
 		if ($key === NULL)
 		{
-			return $this->_get_args;
+			return  $this->_get_args ;
 		}
 
-		return array_key_exists($key, $this->_get_args) ? $this->_xss_clean($this->_get_args[$key], $xss_clean) : FALSE;
+		return  array_key_exists($key, $this->_get_args) ? $this->_xss_clean($this->_get_args[$key], $xss_clean) : FALSE ;
 	}
 
 	/**
