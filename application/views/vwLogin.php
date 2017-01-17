@@ -4,7 +4,7 @@
         
         <title>Booking</title>
         <link href='http://fonts.googleapis.com/css?family=Chivo' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="<?php echo base_url().FOUND; ?>css/foundation.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/foundation.css" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/login.css" />
 		
     </head>
@@ -84,6 +84,6 @@
 		var URL_BASE = '<?php echo base_url(); ?>';
 	</script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url().FOUND; ?>js/foundation.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/login.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/foundation.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/login.js"></script>
 </html>

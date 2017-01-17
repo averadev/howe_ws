@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantec Security</title>
-    <link rel="stylesheet" href="<?php echo base_url().FOUND; ?>css/foundation.css" />
-    <link rel="stylesheet" href="<?php echo base_url().CSS; ?>header.css" />
-	<link rel="stylesheet" href="<?php echo base_url().CSS; ?>common.css" />
-    <link rel="stylesheet" href="<?php echo base_url().CSS; ?>tooltipster.css" />
-    <link rel="stylesheet" href="<?php echo base_url().CSS; ?>themes/tooltipster-shadow.css" />
-	<link rel="stylesheet" href="<?php echo base_url().CSS; ?>paginacionj/style.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/foundation.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/header.css" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/common.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tooltipster.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/themes/tooltipster-shadow.css" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/paginacionj/style.css" />
 
   </head>
 <body>

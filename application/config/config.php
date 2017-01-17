@@ -27,6 +27,7 @@ $ark_root  = "http://".$_SERVER['HTTP_HOST'];
 $ark_root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 $config['base_url']	= $ark_root;
 
+
 define('HTTP_CSS_PATH', $config['base_url'].'assets/css/');
 define('HTTP_IMAGES_PATH', $config['base_url'].'assets/images/');
 define('HTTP_JS_PATH', $config['base_url'].'assets/js/');
@@ -62,7 +63,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------

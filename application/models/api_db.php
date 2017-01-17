@@ -237,7 +237,8 @@ Class api_db extends CI_MODEL
 	 * Obtiene la informacion de visitantes por condominio
 	 */
 	public function getMessageToVisit($condominium){
-		$this->db->select('registro_visitas.id, registro_visitas.nombreVisitante, registro_visitas.motivo, registro_visitas.fechaHora, registro_visitas.enviadoUltimoIntento, registro_visitas.leido');
+		$this->db->select('registro_visitas.id, registro_visitas.nombreVisitante, registro_visitas.motivo, registro_visitas.fechaHora');
+		$this->db->select('registro_visitas.enviadoUltimoIntento, registro_visitas.leido, registro_visitas.action');
         $this->db->from('registro_visitas');
         $this->db->where('registro_visitas.condominiosId', $condominium);
 		$this->db->where('registro_visitas.status = 1');
@@ -300,8 +301,10 @@ Class api_db extends CI_MODEL
 		if(count($idResidencial) > 0){
 			$this->db->select('empleados.nombre, empleados.apellidos, empleados.foto, empleados.residencialId, registro_visitas.fechaHora, empleados.workingTime');
 			$this->db->select('DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(empleados.birthDay)), "%Y")+0 AS edad');
+			$this->db->select('residencial.telAdministracion , residencial.telCaseta, residencial.telLobby');
 			$this->db->from('empleados');
 			$this->db->join('registro_visitas', 'empleados.id = registro_visitas.empleadosId');
+			$this->db->join('residencial', 'residencial.id = empleados.residencialId');
 			$this->db->where('empleados.residencialId = ', $idResidencial[0]->residencialId);
 			$this->db->order_by('registro_visitas.fechaHora DESC'); 
 			$this->db->limit(1);
@@ -309,8 +312,10 @@ Class api_db extends CI_MODEL
 			
 			$this->db->select('empleados.nombre, empleados.apellidos, empleados.foto, empleados.residencialId, cat_notificaciones_seguridad.fechaHora, empleados.workingTime');
 			$this->db->select('DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(empleados.birthDay)), "%Y")+0 AS edad');
+			$this->db->select('residencial.telAdministracion , residencial.telCaseta, residencial.telLobby');
 			$this->db->from('empleados');
 			$this->db->join('cat_notificaciones_seguridad', 'empleados.id = cat_notificaciones_seguridad.empleadosId');
+			$this->db->join('residencial', 'residencial.id = empleados.residencialId');
 			$this->db->where('empleados.residencialId = ', $idResidencial[0]->residencialId);
 			$this->db->order_by('cat_notificaciones_seguridad.fechaHora DESC'); 
 			$this->db->limit(1);
@@ -318,7 +323,9 @@ Class api_db extends CI_MODEL
 			
 			$this->db->select('empleados.nombre, empleados.apellidos, empleados.foto, empleados.residencialId, empleados.workingTime');
 			$this->db->select('DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(empleados.birthDay)), "%Y")+0 AS edad');
+			$this->db->select('residencial.telAdministracion , residencial.telCaseta, residencial.telLobby');
 			$this->db->from('empleados');
+			$this->db->join('residencial', 'residencial.id = empleados.residencialId');
 			$this->db->where('empleados.residencialId = ', $idResidencial[0]->residencialId);
 			$this->db->order_by('empleados.id DESC'); 
 			$this->db->limit(1);
@@ -342,6 +349,17 @@ Class api_db extends CI_MODEL
 			return array();
 		}
 	}
+	
+	/**
+	 * Obtiene los telefonos de emergencia
+	 */
+    public function getEmergencyCalls($condominium){
+		$this->db->select('residencial.id, residencial.telAdministracion, residencial.telCaseta, residencial.telLobby');
+        $this->db->from('residencial');
+		$this->db->join('condominios', 'condominios.residencialId = residencial.id');
+		$this->db->where('condominios.id', $condominium);
+        return $this->db->get()->result();
+    }
 	
 	/**
 	 * Inserta los datos de la queja
@@ -439,15 +457,6 @@ Class api_db extends CI_MODEL
 	public function updateVisitAction($id, $action){
 		$this->db->where('id', $id);
         $this->db->update('registro_visitas', array('action' => $action));
-	}
-	
-	/**
-	 * Elimina los mensajes de visitas
-	 */
-	public function deleteMsgVisit($data){
-		
-		$this->db->update_batch('registro_visitas', $data, 'id'); 
-		
 	}
 	
 }

@@ -352,7 +352,7 @@ class Api extends REST_Controller {
         if ($message == null) {
 			$months = array('', 'Enero','Febrero','Marzp','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
 			$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
-			$items = $this->Api_db->getMessageToVisit($this->get('condominium'));
+			$items = $this->Api_db->getMessageToVisit($this->get('condominioId'));
 			if (count($items) > 0){
 				foreach($items as $item):
 					$fechaD = $dias[date('N', strtotime($item->fechaHora)) - 1];
@@ -453,17 +453,13 @@ class Api extends REST_Controller {
 			
 			$msgVisit =  json_decode($this->get('idMSG'));
 			
-			$visit = array();
-			
 			foreach($msgVisit as $idV){
-				array_push($visit, array(
-					'id' => $idV,
+				$update = array(
 					'status'=> 0
-					)
 				);
+				$condicion = "id = " . $idV;
+				$this->Api_db->updateReturn($update, "registro_visitas", $condicion);
 			}
-			
-			$this->Api_db->deleteMsgVisit($visit);
 			
 			$message = array('success' => true, 'message' => 'Mensajes eliminados');
         }
@@ -513,6 +509,15 @@ class Api extends REST_Controller {
 			
 			$this->Api_db->saveSuggestion($insert);
 			$message = array('success' => true, 'message' => 'Mensaje enviado');
+        }
+        $this->response($message, 200);
+	}
+	
+	public function getEmergencyCalls_get(){
+		$message = $this->verifyIsSet(array('idApp'));
+        if ($message == null) {
+			$items = $this->Api_db->getEmergencyCalls($this->get('condominioId'));
+			$message = array('success' => true, 'message' => 'Mensaje enviado', 'items' => $items);
         }
         $this->response($message, 200);
 	}
